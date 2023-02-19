@@ -2,10 +2,11 @@ package com.flamenbaum.hexagonal.application.core.usecase;
 
 import com.flamenbaum.hexagonal.application.core.domain.Customer;
 import com.flamenbaum.hexagonal.application.ports.in.FindCustomerByIdInputPort;
+import com.flamenbaum.hexagonal.application.ports.in.UpdateCustomerInputPort;
 import com.flamenbaum.hexagonal.application.ports.out.FindAddressByZipCodeOutputPort;
 import com.flamenbaum.hexagonal.application.ports.out.UpdateCustomerOutputPort;
 
-public class UpdateCustomerUseCase {
+public class UpdateCustomerUseCase implements UpdateCustomerInputPort {
 
     private final FindCustomerByIdInputPort findCustomerByIdInputPort;
 
@@ -22,7 +23,7 @@ public class UpdateCustomerUseCase {
         this.updateCustomerOutputPort = updateCustomerOutputPort;
     }
 
-
+    @Override
     public void update(Customer customer, String zipCode){
         findCustomerByIdInputPort.find(customer.getId());
 
